@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 import "./dialog.style.css";
+import { IconClose } from "../icons";
 
-export const Dialog = ({ isOpen, onClose }) => {
+export const Dialog = ({ children, isOpen, onClose }) => {
   const dialogRef = useRef(null);
 
   useEffect(() => {
@@ -18,11 +19,13 @@ export const Dialog = ({ isOpen, onClose }) => {
 
   return (
     <>
-      <dialog ref={dialogRef} className="">
-        <button onClick={onClose} autoFocus>
-          Close
-        </button>
-        <p>papapapa</p>
+      <dialog ref={dialogRef} className="dialog">
+        <div className="btn-close-wrapper">
+          <button onClick={onClose} autoFocus className="btn-close">
+            <IconClose />
+          </button>
+        </div>
+        {children}
       </dialog>
     </>
   );
