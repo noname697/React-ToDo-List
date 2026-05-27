@@ -25,7 +25,7 @@ export const Dialog = ({ children, isOpen, onClose }) => {
             <IconClose />
           </button>
         </div>
-        {children}
+        <div className="body">{children}</div>
       </dialog>
     </>
   );
