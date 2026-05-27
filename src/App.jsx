@@ -60,6 +60,10 @@ function App() {
     setShowDialog(!showDialog);
   };
 
+  const addTodo = () => {
+    toggleDialog();
+  };
+
   return (
     <main>
       <Container>
@@ -83,7 +87,7 @@ function App() {
           </ToDoList>
           <Footer>
             <Dialog isOpen={showDialog} onClose={toggleDialog}>
-              <ToDoForm />
+              <ToDoForm onSubmit={addTodo} />
             </Dialog>
             <FabButton onClick={toggleDialog}>
               <IconPlus />
