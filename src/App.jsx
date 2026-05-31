@@ -56,57 +56,9 @@ import { ToDoForm } from "./components/ToDoForm";
 
 function App() {
   const [showDialog, setShowDialog] = useState(false);
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      description: "JSX e componentes",
-      completed: false,
-      createdAt: "2022-10-31",
-    },
-    {
-      id: 2,
-      description: "Controle de inputs e formulários controlados",
-      completed: true,
-      createdAt: "2022-10-31",
-    },
-  ]);
 
   const toggleDialog = () => {
     setShowDialog(!showDialog);
-  };
-
-  const addTodo = (formData) => {
-    const description = formData.get("description");
-    setTodos((prev) => {
-      const todo = {
-        id: prev.length + 1,
-        description,
-        completed: false,
-        createdAt: new Date().toISOString(),
-      };
-      return [...prev, todo];
-    });
-    toggleDialog();
-  };
-
-  const toggleTodoCompleted = (todo) => {
-    setTodos((prev) => {
-      return prev.map((item) => {
-        if (item.id == todo.id) {
-          return {
-            ...item,
-            completed: !item.completed,
-          };
-        }
-        return item;
-      });
-    });
-  };
-
-  const removeTodo = (todo) => {
-    setTodos((prev) => {
-      return prev.filter((item) => item.id != todo.id);
-    });
   };
 
   return (
@@ -118,8 +70,20 @@ function App() {
           </Heading>
         </Header>
         <ChecklistsWrapper>
+          {/* <TodoGroup
+            heading="Para estudar"
+            items={todos.filter((t) => !t.completed)}
+            onToggleCompleted={toggleTodoCompleted}
+            onRemoveTodo={removeTodo}
+          />
+          <TodoGroup
+            heading="Concluído"
+            items={todos.filter((t) => t.completed)}
+            onToggleCompleted={toggleTodoCompleted}
+            onRemoveTodo={removeTodo}
+          /> */}
           <SubHeading>Para estudar</SubHeading>
-          <ToDoList>
+          {/* <ToDoList>
             {todos
               .filter((t) => !t.completed)
               .map(function (t) {
@@ -132,9 +96,9 @@ function App() {
                   />
                 );
               })}
-          </ToDoList>
+          </ToDoList> */}
           <SubHeading>Concluído</SubHeading>
-          <ToDoList>
+          {/* <ToDoList>
             {todos
               .filter((t) => t.completed)
               .map(function (t) {
@@ -147,10 +111,10 @@ function App() {
                   />
                 );
               })}
-          </ToDoList>
+          </ToDoList> */}
           <Footer>
             <Dialog isOpen={showDialog} onClose={toggleDialog}>
-              <ToDoForm onSubmit={addTodo} />
+              {/* <ToDoForm onSubmit={addTodo} /> */}
             </Dialog>
             <FabButton onClick={toggleDialog}>
               <IconPlus />
