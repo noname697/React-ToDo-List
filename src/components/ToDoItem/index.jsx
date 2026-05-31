@@ -1,8 +1,11 @@
 import "./todo-item.style.css";
 import { IconPencil, IconTrash } from "../icons";
+import { use } from "react";
+import TodoContext from "../TodoProvider/TodoContext";
 
-export function ToDoItem({ item, onToggleCompleted, onRemoveTodo }) {
+export function ToDoItem({ item }) {
   const styles = ["todo-item"];
+  const { toggleTodoCompleted, removeTodo } = use(TodoContext);
 
   if (item.completed) {
     styles.push("completed");
@@ -18,11 +21,11 @@ export function ToDoItem({ item, onToggleCompleted, onRemoveTodo }) {
           type="checkbox"
           className="checkbox"
           defaultChecked={item.completed}
-          onChange={() => onToggleCompleted(item)}
+          onChange={() => toggleTodoCompleted(item)}
         />
         <p className="description">{item.description}</p>
         <div className="actions">
-          <button className="btn" onClick={() => onRemoveTodo(item)}>
+          <button className="btn" onClick={() => removeTodo(item)}>
             <IconTrash />
           </button>
           <button className="btn">
